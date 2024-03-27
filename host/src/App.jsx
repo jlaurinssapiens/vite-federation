@@ -2,6 +2,8 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import Main from 'widget/Main';
 import { store } from './store';
+import { Test } from './Test';
+
 
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
       <div id="scroll" className='text-xl text-green-600'>This is Studio</div>
       <div className='border-2 border-green-400 w-64 h-96'></div>
       <div className='border-2 border-green-400 w-64 h-96'></div>
-      <Main store={store}/>
+      <Test bar='asdas' />
+      <Main store={store} />
     </div>
   )
 }
