@@ -4,13 +4,21 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite build --watch & vite preview",
     "dev:cra": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite build --watch & vite preview",
     "serve": "vite preview"
   },
   "dependencies": {
+    "jss": "10.4.0",
+    "jss-rtl": "0.3.0",
+    "@material-ui/core": "4.12.3",
+    "@material-ui/icons": "4.11.2",
+    "@material-ui/lab": "4.0.0-alpha.60",
+    "react-router": "5.2.0",
+    "react-router-dom": "5.2.0",
+    "seamless-immutable": "7.1.4",
+    "lodash": "4.17.21",
     "react": "^16",
     "react-dom": "^16",
     "react-redux": "^7"
@@ -22,6 +30,9 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "@vitejs/plugin-react": "^3.0.0",
+    "@types/react-router": "5.1.17",
+    "@types/lodash": "4.14.178",
+    "@types/react-router-dom": "5.3.3",
     "vite": "^4.0.5"
   }
 }

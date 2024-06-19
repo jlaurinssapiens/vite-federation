@@ -1,0 +1,74 @@
+// monorepo root tsconfig, configured for fast typescript compilation of monorepo packages.
+// set up tsup is used to compile the monorepo packages.
+// tsc is used for typecheck & types generation, noEmit=true is used to avoid emitting.js files.
+{
+  "compilerOptions": {
+    // Allows JavaScript files to be compiled along with TypeScript files
+    "allowJs": true,
+    // Allows default imports from modules with no default export. This does not affect code emit, just typechecking.
+    "allowSyntheticDefaultImports": true,
+    // Sets the base URL to resolve non-relative module imports. "." means the current directory.
+    "baseUrl": ".",
+    // Generates .d.ts declaration files for TypeScript types.
+    "declaration": true,
+    // Generates sourcemaps for .d.ts files
+    "declarationMap": true,
+    // Allows imports of CommonJS modules as default imports. This does not affect code emit, just typechecking.
+    //// my-module.js (CommonJS)
+    // module.exports = {
+    //  foo: 'foo'
+    // }
+    //// index.ts
+    // import myModule from './my-module'; // allowed with esModuleInterop
+    "esModuleInterop": true,
+    // Ensures consistent casing of file names.
+    "forceConsistentCasingInFileNames": true,
+    // Imports helper functions (e.g. __extends) from tslib instead of inline. The __extends helper is emitted in each file that needs it.
+    // If you enable "importHelpers": true, then these helpers will be imported from the tslib module instead
+    // WARNING: although tslib is install our project fail to compile when this value is true
+    "importHelpers": false,
+    // Includes sourcemaps inline instead of in separate files.
+    "inlineSourceMap": true,
+    // Performs additional checks to ensure module isolation. "isolatedModules" enforces stricter module boundaries for better encapsulation and prevents accidental uses of unexported declarations.
+    "isolatedModules": true,
+    // Specifies the JSX mode. "react-jsx" uses React-specific JSX transforms.
+    "jsx": "react-jsx",
+    // Specifies module code generation. "nodenext" is for Node.js 12 and above.
+    // import/export statements are emitted directly instead of using require()/module.exports
+    "module": "ESNext",
+    // Specifies how modules get resolved. "node" mimics Node.js module resolution. provides a better developer experience by aligning the code with how Node.js resolves modules at runtime.
+    // For example, you can omit file extensions for imports like: import foo from './foo';
+    "moduleResolution": "node",
+    // Does not emit compiled JavaScript files. required for steps like typecheck (= tsc without parameters) that performs only typecheck while we use tsup to compile.
+    // emit=false is set in tsconfig.build.json when building applications and libraries
+    "noEmit": true,
+    // Warns on fallthrough cases in switch statements.
+    "noFallthroughCasesInSwitch": true,
+    // Maps imports to locations using glob patterns.
+    "paths": {
+      "@spnsdigital/*": [
+        "applications/*/src",
+        "libraries/*/src",
+      ],
+      "@spnsdigital/widget": [
+        "remote/src/components/Main.jsx"
+      ]
+    },
+    // Allows importing .json files, required to import package.json
+    "resolveJsonModule": true,
+    // Skips type checking of declaration files. Improves build speed. We run type check separatly
+    "skipLibCheck": true,
+    // Enables all strict type checking options.
+    "strict": true,
+    // Specifies ECMAScript target version. "es6" is ECMAScript 2015.
+    "target": "es6"
+  },
+  // Excludes matching files from any typescript processing, tsc, tsup, ...
+  "exclude": [
+    // remove tests from compilation
+    "**/__tests__",
+    "node_modules",
+    // don't compile the compiled folder
+    "ds-*/lib"
+  ]
+}
