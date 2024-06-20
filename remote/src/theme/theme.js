@@ -1,5 +1,5 @@
-import { createTheme } from '@material-ui/core/styles'
-import Immutable from 'seamless-immutable'
+import { createTheme } from "@material-ui/core/styles";
+import Immutable from "seamless-immutable";
 
 const DEFAULT_THEME = {
   measurements: {
@@ -7,67 +7,67 @@ const DEFAULT_THEME = {
   },
   palette: {
     primary: {
-      main: '#00376c',
-      light: '#45a4ff',
+      main: "#4639d4",
+      dark: "#360c8a",
     },
     studioBuilder: {
       primary: {
-        main: '#3e63ff',
-        additional: '#3793ee',
-        background: '#ffffff',
-        light: '#d7e0fd',
-        dark: '#1731a0',
+        main: "#3e63ff",
+        additional: "#3793ee",
+        background: "#ffffff",
+        light: "#d7e0fd",
+        dark: "#1731a0",
       },
       secondary: {
-        main: '#f25924',
-        background: '#ffffff',
-        light: '#ff8b52',
+        main: "#f25924",
+        background: "#ffffff",
+        light: "#ff8b52",
       },
       default: {
-        main: '#959595',
-        background: '#000000',
-        light: '#f5f5f5',
+        main: "#959595",
+        background: "#000000",
+        light: "#f5f5f5",
       },
       text: {
-        dark: '#000000',
-        light: '#ffffff',
+        dark: "#000000",
+        light: "#ffffff",
       },
       extras: {
-        confirmBackground: '#4caf50',
-        settingsContainersBackground: '#e3e8eb',
-        sectionOverlay: '#71d7f7',
+        confirmBackground: "#4caf50",
+        settingsContainersBackground: "#e3e8eb",
+        sectionOverlay: "#71d7f7",
       },
     },
   },
   typography: {
     body1: {
-      fontFamily: 'inherit',
+      fontFamily: "inherit",
     },
     subtitle2: {
-      fontFamily: 'inherit',
+      fontFamily: "inherit",
     },
   },
   overrides: {
     MuiMobileStepper: {
       root: {
-        fontFamily: 'inherit',
-        fontSize: '16px',
+        fontFamily: "inherit",
+        fontSize: "16px",
         padding: 0,
       },
       dot: {
-        width: '5px',
-        height: '5px',
-        margin: '0 3px',
+        width: "5px",
+        height: "5px",
+        margin: "0 3px",
       },
     },
     MuiButton: {
       root: {
-        textTransform: 'none',
+        textTransform: "none",
       },
       containedPrimary: {
-        boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
-        '&:hover': {
-          boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2)',
+        boxShadow: "0px 2px 4px -1px rgba(0,0,0,0.2)",
+        "&:hover": {
+          boxShadow: "0px 2px 4px -1px rgba(0,0,0,0.2)",
         },
       },
     },
@@ -77,62 +77,63 @@ const DEFAULT_THEME = {
       },
     },
     MuiCssBaseline: {
-      '@global': {
-        '.no-select': {
-          userSelect: 'none',
+      "@global": {
+        ".no-select": {
+          userSelect: "none",
         },
       },
     },
     MuiTableCell: {
       root: {
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
       },
       head: {
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
       },
     },
     MuiInputBase: {
       root: {
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
       },
       input: {
-        fontFamily: 'inherit',
+        fontFamily: "inherit",
       },
     },
   },
-}
+};
 
-let theme = createTheme(DEFAULT_THEME)
-const getFormTheme = () => theme
+let theme = createTheme(DEFAULT_THEME);
+const getFormTheme = () => theme;
 
 const setFormTheme = (newTheme) => {
   if (!newTheme) {
-    return
+    return;
   }
 
-  const darkMode = true
+  const darkMode = true;
 
-  let newThemeWithCorrectPaletteMode = newTheme
+  let newThemeWithCorrectPaletteMode = newTheme;
   if (newTheme.palette && newTheme.palette.dark && newTheme.palette.light) {
     newThemeWithCorrectPaletteMode = {
       ...newTheme,
       palette: {
         ...newTheme.palette,
-        ...newTheme.palette[darkMode ? 'dark' : 'light'],
+        ...newTheme.palette[darkMode ? "dark" : "light"],
       },
-    }
+    };
   }
 
-  theme = createTheme(Immutable(theme).merge(
-    {
-      ...newThemeWithCorrectPaletteMode,
-      direction: newTheme.language === 'he' ? 'rtl' : 'ltr',
-    },
-    { deep: true },
-  ).asMutable({ deep: true }))
-}
+  theme = createTheme(
+    Immutable(theme)
+      .merge(
+        {
+          ...newThemeWithCorrectPaletteMode,
+          direction: newTheme.language === "he" ? "rtl" : "ltr",
+        },
+        { deep: true }
+      )
+      .asMutable({ deep: true })
+  );
+};
 
-export {
-  getFormTheme,
-  setFormTheme,
-}
+export { getFormTheme, setFormTheme };

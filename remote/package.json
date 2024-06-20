@@ -6,7 +6,7 @@
   "scripts": {
     "dev:cra": "vite",
     "build": "vite build",
-    "preview": "vite build --watch & vite preview",
+    "preview": "vite preview",
     "serve": "vite preview"
   },
   "dependencies": {

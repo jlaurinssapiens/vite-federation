@@ -46,13 +46,8 @@
     "noFallthroughCasesInSwitch": true,
     // Maps imports to locations using glob patterns.
     "paths": {
-      "@spnsdigital/*": [
-        "applications/*/src",
-        "libraries/*/src",
-      ],
-      "@spnsdigital/widget": [
-        "remote/src/components/Main.jsx"
-      ]
+      "@spnsdigital/*": ["applications/*/src", "libraries/*/src"],
+      "@spnsdigital/widget": ["remote/src/components/Widget.jsx"]
     },
     // Allows importing .json files, required to import package.json
     "resolveJsonModule": true,
